@@ -15,6 +15,6 @@
     "@netlify/netlify-marketing-tokens": "^1.1.0",
     "astro": "^2.0.0",
     "react-select": "^5.8.0",
-    "@spatialillusions/milsymbol":"^2.2.0"
+    "milsymbol":"^2.2.0"
   }
 }
