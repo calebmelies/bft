@@ -14,6 +14,6 @@
     "@astrojs/sitemap": "^1.0.0",
     "@netlify/netlify-marketing-tokens": "^1.1.0",
     "astro": "^2.0.0",
-    "react-select": "^5.2.2"
+    "react-select": "^5.8.0"
   }
 }
