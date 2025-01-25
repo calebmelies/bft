@@ -1,6 +1,6 @@
 {
   "name": "bft",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@astrojs/react": "^2.0.0",
@@ -17,10 +17,6 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/react": "^2.0.0",
-    "@astrojs/preact": "^1.0.2",
-    "@astrojs/sitemap": "^1.0.0",
-    "@netlify/netlify-marketing-tokens": "^1.1.0",
-    "astro": "^2.0.0"
+    "@astrojs/react": "^2.0.0"
   }
 }
