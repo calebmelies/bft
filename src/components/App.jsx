@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import MilitaryUnitSelector from "./MilitaryUnitSelector";
 import MilitarySymbol from "./MilitarySymbol";
 import TshirtMockup from "./TshirtMockup";
-import 'react-select/dist/react-select.css';
+// import 'react-select/dist/react-select.css';
 
 const App = () => {
   const [unitType, setUnitType] = useState("");
