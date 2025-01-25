@@ -1,23 +1,26 @@
-// src/components/MilitaryUnitSelector.jsx
-import React from "react";
-import Select from "react-select";
+import React from 'react';
 
 const unitOptions = [
-  { value: "infantry", label: "Infantry" },
-  { value: "armor", label: "Armor" },
-  { value: "artillery", label: "Artillery" },
-  { value: "aviation", label: "Aviation" },
+  { value: 'infantry', label: 'Infantry' },
+  { value: 'armor', label: 'Armor' },
+  { value: 'artillery', label: 'Artillery' },
+  { value: 'aviation', label: 'Aviation' },
 ];
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
   return (
     <div>
       <h2>Select Your Military Unit</h2>
-      <Select
-        options={unitOptions}
-        onChange={(selectedOption) => onUnitSelect(selectedOption.value)}
-        placeholder="Choose a unit..."
-      />
+      <select onChange={(e) => onUnitSelect(e.target.value)} defaultValue="">
+        <option value="" disabled>
+          Choose a unit...
+        </option>
+        {unitOptions.map((unit) => (
+          <option key={unit.value} value={unit.value}>
+            {unit.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
