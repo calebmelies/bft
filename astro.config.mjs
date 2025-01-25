@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://feature-tour.netlify.app',
   integrations: [
     preact(),
+    react(),
     sitemap({
       canonicalURL: 'https://feature-tour.netlify.app'
     })
