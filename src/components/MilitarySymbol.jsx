@@ -1,18 +1,29 @@
-// src/components/MilitarySymbol.jsx
 import React, { useEffect, useState } from "react";
-import { Symbol } from "@spatialillusions/unit-symbolizer";
 
 const MilitarySymbol = ({ unitType }) => {
   const [symbolUrl, setSymbolUrl] = useState("");
+  const [Symbol, setSymbol] = useState(null);
 
   useEffect(() => {
+    // Dynamically import the symbolizer module in the browser
+    const loadSymbolizer = async () => {
+      const { Symbol } = await import("@spatialillusions/unit-symbolizer");
+      setSymbol(Symbol);
+    };
+
     if (unitType) {
+      loadSymbolizer();
+    }
+  }, [unitType]);
+
+  useEffect(() => {
+    if (Symbol && unitType) {
       const symbol = new Symbol()
         .set("symbolset", 10) // Use Symbol Set for Land Units
         .set("entity", unitType); // Set dynamic entity
       setSymbolUrl(symbol.asCanvas().toDataURL());
     }
-  }, [unitType]);
+  }, [Symbol, unitType]);
 
   return (
     <div>
