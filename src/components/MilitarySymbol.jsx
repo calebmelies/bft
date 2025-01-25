@@ -7,7 +7,7 @@ const MilitarySymbol = ({ unitType }) => {
   useEffect(() => {
     // Dynamically import the symbolizer module in the browser
     const loadSymbolizer = async () => {
-      const { Symbol } = await import("@spatialillusions/unit-symbolizer");
+      const { Symbol } = await import("@spatialillusions/milsymbol");
       setSymbol(Symbol);
     };
 
