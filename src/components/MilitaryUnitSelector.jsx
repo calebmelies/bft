@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import MilSymbol from 'milsymbol'; // Import the milsymbol package
 
 // Updated unit options with the LAV-25
 const unitOptions = [
@@ -12,22 +11,31 @@ const unitOptions = [
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
   const [unitSymbol, setUnitSymbol] = useState('');
+  const [MilSymbol, setMilSymbol] = useState(null); // State to store the MilSymbol class
 
-  // Generate the symbol whenever the unit is selected
+  useEffect(() => {
+    // Dynamically import milsymbol when the component mounts
+    import('milsymbol').then((module) => {
+      setMilSymbol(module.default || module); // Store the MilSymbol class
+    });
+  }, []); // This effect runs only once after the component mounts
+
   const generateSymbol = (unit) => {
-    let symbol;
+    if (MilSymbol) {
+      let symbol;
 
-    // Logic to generate symbol based on selected unit
-    if (unit === 'lav25') {
-      // LAV-25 symbol generation using milsymbol
-      symbol = new MilSymbol('G*G*C*A*C' + '1505000000', { modifier: 'Reconnaissance', affiliation: 'F' });
-    } else {
-      // Default symbol generation (use other codes for different unit types)
-      symbol = new MilSymbol('G*G*F*C*A', { affiliation: 'F' });
+      // Logic to generate symbol based on selected unit
+      if (unit === 'lav25') {
+        // LAV-25 symbol generation using milsymbol
+        symbol = new MilSymbol('G*G*C*A*C' + '1505000000', { modifier: 'Reconnaissance', affiliation: 'F' });
+      } else {
+        // Default symbol generation (use other codes for different unit types)
+        symbol = new MilSymbol('G*G*F*C*A', { affiliation: 'F' });
+      }
+
+      // Set the symbol as a base64-encoded string
+      setUnitSymbol(symbol.asCanvas().toDataURL());
     }
-
-    // Set the symbol as a base64-encoded string
-    setUnitSymbol(symbol.asCanvas().toDataURL());
   };
 
   useEffect(() => {
