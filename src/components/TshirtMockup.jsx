@@ -5,7 +5,7 @@ const TshirtMockup = ({ symbolUrl }) => {
   return (
     <div style={{ position: "relative", textAlign: "center" }}>
       <img
-        src="https://example.com/tshirt-mockup.png" // Replace with your t-shirt image URL
+        src="https://www.freepnglogos.com/uploads/t-shirt-png/t-shirt-png-tshirt-png-clip-art-best-web-clipart-18.png" // Replace with your t-shirt image URL
         alt="T-shirt Mockup"
         style={{ width: 300 }}
       />
