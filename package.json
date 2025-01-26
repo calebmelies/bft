@@ -8,6 +8,9 @@
     "build": "astro build",
     "preview": "astro preview"
   },
+  "dependencies": {
+    "milsymbol": "^2.2.0"
+  },
   "devDependencies": {
     "@astrojs/react": "^1.0.2",
     "@astrojs/preact": "^1.0.2",
