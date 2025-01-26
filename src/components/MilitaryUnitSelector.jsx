@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Symbol } from '@spatialillusions/unit-symbolizer';
+import { Symbol } from 'milsymbol';
 
 const MilitarySymbol = ({ unitType }) => {
   const [symbolUrl, setSymbolUrl] = useState('');
