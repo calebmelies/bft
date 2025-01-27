@@ -16,5 +16,8 @@
     "astro": "^2.0.0",
     "react-select": "^5.8.0",
     "milsymbol": "^2.2.0"
+  },
+  "dependencies": {
+    "milsymbol": "^2.2.0"
   }
 }
