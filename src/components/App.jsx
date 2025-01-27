@@ -8,7 +8,7 @@ const App = () => {
   const handleUnitSelect = (symbol) => {
     setUnitSymbol(symbol); // Update the symbol URL
   };
-  chrome.storage.session.setAccessLevel({ accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS' });
+  // chrome.storage.session.setAccessLevel({ accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS' });
   try{
     console.log("rendering App:")
                 
