@@ -16,6 +16,17 @@ const App = () => {
         <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '20px' }}>
             <h1>Military T-Shirt Designer</h1>
           <MilitaryUnitSelector onUnitSelect={handleUnitSelect} />
+            <div
+                style={{
+                    width: '500px',
+                    height: '900px',
+                    display: 'flex',
+                    backgroundImage: 'url(/images/tshirt.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '10px',
+                }}
+            ></div>
             {console.log(unitSymbol)}
           {unitSymbol && (
             <div style={{ marginTop: '40px' }}>
