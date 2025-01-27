@@ -1,33 +1,30 @@
-import React, { useState } from 'react';
-import MilitaryUnitSelector from './MilitaryUnitSelector';
+import React from 'react';
 
-const App = () => {
-  const [unitSymbol, setUnitSymbol] = useState('');
+// Updated unit options with the LAV-25
+const unitOptions = [
+  { value: 'infantry', label: 'Infantry' },
+  { value: 'armor', label: 'Armor' },
+  { value: 'artillery', label: 'Artillery' },
+  { value: 'aviation', label: 'Aviation' },
+  { value: 'lav25', label: 'LAV-25 (1st Light Armored Reconnaissance)' }, // New option added
+];
 
-  const handleUnitSelect = (symbol) => {
-    console.log('Selected symbol:', symbol);
-    setUnitSymbol(symbol); // Update the symbol URL
-  };
-
-  try {
-    console.log('Rendering App component');
-    return (
-        <div style={{ textAlign: 'center', padding: '20px' }}>
-          <h1>Military T-Shirt Designer</h1>
-          <MilitaryUnitSelector onUnitSelect={handleUnitSelect} />
-
-          {unitSymbol && (
-              <div>
-                <h3>Your T-Shirt Mockup</h3>
-                <img src={unitSymbol} alt="Unit Symbol" />
-              </div>
-          )}
-        </div>
-    );
-  } catch (error) {
-    console.error('Error in App component:', error);
-    return <div>Something went wrong in the App component.</div>;
-  }
+const MilitaryUnitSelector = ({ onUnitSelect }) => {
+  return (
+      <div>
+        <h2>Select Your Military Unit</h2>
+        <select onChange={(e) => onUnitSelect(e.target.value)} defaultValue="">
+          <option value="" disabled>
+            Choose a unit...
+          </option>
+          {unitOptions.map((unit) => (
+              <option key={unit.value} value={unit.value}>
+                {unit.label}
+              </option>
+          ))}
+        </select>
+      </div>
+  );
 };
 
-export default App;
+export default MilitaryUnitSelector;
