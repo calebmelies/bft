@@ -20,7 +20,7 @@ const App = () => {
                 style={{
                     width: '100%',
                     height: '100%',
-                    backgroundImage: 'url(public/images/tshirt.png)',
+                    backgroundImage: 'url(/images/tshirt.png)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     borderRadius: '10px',
@@ -46,7 +46,7 @@ const App = () => {
                   style={{
                     width: '100%',
                     height: '100%',
-                    backgroundImage: 'url(public/images/tshirt.png)',
+                    backgroundImage: 'url(/images/tshirt.png)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     borderRadius: '10px',
