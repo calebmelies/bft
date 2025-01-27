@@ -13,7 +13,7 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
   return (
       <div>
         <h2>Find Your Military Unit</h2>
-        <select onChange={(e) => onUnitSelect(e.target.value)} defaultValue="">
+        <select onChange={(e) => onUnitSelect(e.target.value)} defaultValue="lav25">
           <option value="" disabled>
             Choose a unit...
           </option>
