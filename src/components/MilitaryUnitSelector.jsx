@@ -11,39 +11,43 @@ const unitOptions = [
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
   const [unitSymbol, setUnitSymbol] = useState('');
-  const [MilSymbol, setMilSymbol] = useState(null); // State to store the MilSymbol class
+  const [milSymbolLib, setMilSymbolLib] = useState(null); // State to store the milsymbol library
 
+  // Dynamically import milsymbol on component mount
   useEffect(() => {
-    // Dynamically import milsymbol when the component mounts
     import('milsymbol').then((module) => {
-      setMilSymbol(module.default || module); // Store the MilSymbol class
+      setMilSymbolLib(module.default || module);
     });
-  }, []); // This effect runs only once after the component mounts
+  }, []);
 
-  const generateSymbol = (unit) => {
-    if (MilSymbol) {
+  const generateSymbol = async (unit) => {
+    if (milSymbolLib) {
       let symbol;
 
-      // Logic to generate symbol based on selected unit
+      // Generate symbol based on selected unit
       if (unit === 'lav25') {
-        // LAV-25 symbol generation using milsymbol
-        symbol = new MilSymbol('G*G*C*A*C' + '1505000000', { modifier: 'Reconnaissance', affiliation: 'F' });
-      } else {
-        // Default symbol generation (use other codes for different unit types)
-        symbol = new MilSymbol('G*G*F*C*A', { affiliation: 'F' });
+        // LAV-25 symbol generation
+        symbol = new milSymbolLib('SFGPUCI----E---', {
+          modifier: 'Reconnaissance',
+          affiliation: 'F',
+        });
+      } else if (unit === 'infantry') {
+        symbol = new milSymbolLib('SFGPUCI----G---', { affiliation: 'F' });
+      } else if (unit === 'armor') {
+        symbol = new milSymbolLib('SFGPUCA----G---', { affiliation: 'F' });
+      } else if (unit === 'artillery') {
+        symbol = new milSymbolLib('SFGPUCR----G---', { affiliation: 'F' });
+      } else if (unit === 'aviation') {
+        symbol = new milSymbolLib('SFGPUCAH---G---', { affiliation: 'F' });
       }
 
-      // Set the symbol as a base64-encoded string
-      setUnitSymbol(symbol.asCanvas().toDataURL());
+      // Convert symbol to base64 image and update state
+      if (symbol) {
+        setUnitSymbol(symbol.asCanvas().toDataURL());
+        onUnitSelect(symbol.asCanvas().toDataURL()); // Pass it to parent component
+      }
     }
   };
-
-  useEffect(() => {
-    if (unitSymbol) {
-      // When symbol is available, pass it to parent component
-      onUnitSelect(unitSymbol);
-    }
-  }, [unitSymbol, onUnitSelect]);
 
   return (
     <div>
@@ -65,7 +69,7 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
         ))}
       </select>
 
-      <div>
+      <div style={{ marginTop: '20px' }}>
         <h3>Unit Symbol</h3>
         {unitSymbol ? (
           <img src={unitSymbol} alt="Unit Symbol" style={{ width: 100 }} />
