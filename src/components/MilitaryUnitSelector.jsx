@@ -16,7 +16,7 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
         const value = e.target.value;
         console.error("value:" + value)
         setSelectedUnit(value);
-        onUnitSelect(value); // Pass the value up to the parent component
+        // onUnitSelect(value); // Pass the value up to the parent component
     };
 
     return (
