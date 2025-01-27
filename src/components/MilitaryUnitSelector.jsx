@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import milsymbol from 'milsymbol'; // Ensure this library is compatible with your environment
+import milsymbol from '../../packages/milsymbol'; // Ensure this library is compatible with your environment
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
   const [unitOptions, setUnitOptions] = useState([]);
