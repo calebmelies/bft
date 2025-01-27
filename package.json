@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "bft",
   "version": "0.0.1",
   "private": true,
