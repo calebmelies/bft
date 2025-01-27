@@ -22,7 +22,7 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
         <div>
             <h2>Find Your Military Unit</h2>
             {/* Div to display the selected value */}
-            <div>
+            <div>d
                 {selectedUnit ? <p>Selected Unit: {selectedUnit}</p> : <p>Please select a unit</p>}
             </div>
             <select onChange={handleChange} defaultValue="">
