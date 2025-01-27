@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "milsymbol": "^2.2.0"
+    "milsymbol":"file:/packages/milsymbol"
   },
   "devDependencies": {
     "@astrojs/react": "^1.0.2",
