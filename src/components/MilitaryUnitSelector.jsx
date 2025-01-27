@@ -12,7 +12,7 @@ const unitOptions = [
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
   return (
       <div>
-        <h2>Select Your Military Unit</h2>
+        <h2>Find Your Military Unit</h2>
         <select onChange={(e) => onUnitSelect(e.target.value)} defaultValue="">
           <option value="" disabled>
             Choose a unit...
