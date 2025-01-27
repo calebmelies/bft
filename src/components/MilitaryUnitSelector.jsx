@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import MilSymbol from 'milsymbol'; // Import the milsymbol package
 // Updated unit options
 const unitOptions = [
     { value: 'infantry', label: 'Infantry' },
@@ -10,20 +10,37 @@ const unitOptions = [
 ];
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
-    const [selectedUnit="v", setSelectedUnit] = useState('artillery');
+    const [selectedUnit, setSelectedUnit] = useState('');
 
     const handleChange = (e) => {
+        // console.log('handleChange', e);
         const value = e.target.value;
-        console.error("value:" + value)
-        setSelectedUnit(value);
-        onUnitSelect(value); // Pass the value up to the parent component
+        const unit = e.target.value;
+        let symbol;
+        console.log(unit);
+        // Logic to generate symbol based on selected unit
+        if (unit === 'lav25') {
+            // LAV-25 symbol generation using milsymbol
+            symbol = new MilSymbol('G*G*C*A*C' + '1505000000', { modifier: 'Reconnaissance', affiliation: 'F' });
+        } else {
+            // Default symbol generation (use other codes for different unit types)
+            symbol = new MilSymbol('G*G*F*C*A', { affiliation: 'F' });
+        }
+        console.log("symbol:  - " + symbol);
+        // Set the symbol as a base64-encoded string
+        // setUnitSymbol(symbol.asCanvas().toDataURL());
+        // console.log('value: ', value);
+        // setSelectedUnit(value);
+        setSelectedUnit(symbol.asCanvas().toDataURL());
+        // onUnitSelect(value); // Pass the value up to the parent component
+        onUnitSelect(symbol.asCanvas().toDataURL()); // Pass the value up to the parent component
     };
 
     return (
         <div>
             <h2>Find Your Military Unit</h2>
             {/* Div to display the selected value */}
-            <div>eee
+            <div>
                 {selectedUnit ? <p>Selected Unit: {selectedUnit}</p> : <p>Please select a unit</p>}
             </div>
             <select onChange={handleChange} defaultValue="">
