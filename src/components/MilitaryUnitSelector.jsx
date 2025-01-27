@@ -29,7 +29,7 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
                   console.log("Selected value:", e.target.value);
                   onUnitSelect(e.target.value);
               }}
-              defaultValue=""
+              defaultValue="lav25"
           >
                 <option value="" disabled>
                   Choose a unit...
