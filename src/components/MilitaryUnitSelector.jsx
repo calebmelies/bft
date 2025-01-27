@@ -1,83 +1,62 @@
-import React, { useState, useEffect } from 'react';
-console.log("militaryunitselector")
-// Updated unit options with the LAV-25
-const unitOptions = [
-  { value: 'infantry', label: 'Infantry' },
-  { value: 'armor', label: 'Armor' },
-  { value: 'artillery', label: 'Artillery' },
-  { value: 'aviation', label: 'Aviation' },
-  { value: 'lav25', label: 'LAV-25 (1st Light Armored Reconnaissance)' }, // New option added
-];
+import React, { useEffect, useState } from 'react';
+import milsymbol from 'milsymbol'; // Ensure this library is compatible with your environment
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
-  const [unitSymbol, setUnitSymbol] = useState('');
-  const [milSymbolLib, setMilSymbolLib] = useState(null); // State to store the milsymbol library
+  const [unitOptions, setUnitOptions] = useState([]);
 
-  // Dynamically import milsymbol on component mount
-  useEffect(() => {
-    import('milsymbol').then((module) => {
-      setMilSymbolLib(module.default || module);
-    });
-  }, []);
-
-  const generateSymbol = async (unit) => {
-    if (milSymbolLib) {
-      let symbol;
-
-      // Generate symbol based on selected unit
-      if (unit === 'lav25') {
-        // LAV-25 symbol generation
-        symbol = new milSymbolLib('SFGPUCI----E---', {
-          modifier: 'Reconnaissance',
-          affiliation: 'F',
-        });
-      } else if (unit === 'infantry') {
-        symbol = new milSymbolLib('SFGPUCI----G---', { affiliation: 'F' });
-      } else if (unit === 'armor') {
-        symbol = new milSymbolLib('SFGPUCA----G---', { affiliation: 'F' });
-      } else if (unit === 'artillery') {
-        symbol = new milSymbolLib('SFGPUCR----G---', { affiliation: 'F' });
-      } else if (unit === 'aviation') {
-        symbol = new milSymbolLib('SFGPUCAH---G---', { affiliation: 'F' });
-      }
-
-      // Convert symbol to base64 image and update state
-      if (symbol) {
-        setUnitSymbol(symbol.asCanvas().toDataURL());
-        onUnitSelect(symbol.asCanvas().toDataURL()); // Pass it to parent component
-      }
+  // Refactor to avoid useEffect storage-related issues
+  const generateUnitOptions = () => {
+    try {
+      // Generate unit options dynamically using milsymbol
+      const options = [
+        {
+          label: 'LAV-25, 1st LAR',
+          value: new milsymbol.Symbol().setOptions({ icon: 'unit', affiliation: 'Friendly' }).asSVG(),
+        },
+        {
+          label: 'Tank Unit',
+          value: new milsymbol.Symbol().setOptions({ icon: 'tank', affiliation: 'Friendly' }).asSVG(),
+        },
+        {
+          label: 'Infantry Unit',
+          value: new milsymbol.Symbol().setOptions({ icon: 'infantry', affiliation: 'Friendly' }).asSVG(),
+        },
+      ];
+      return options;
+    } catch (error) {
+      console.error('Error generating unit options:', error);
+      return [];
     }
   };
-  console.log('<img src={unitSymbol} alt="Unit Symbol" style={{ width: 100 }} />')
-  console.log(unitSymbol)
+
+  useEffect(() => {
+    // Initialize options only on the client side
+    if (typeof window !== 'undefined') {
+      console.log('Initializing unit options');
+      const options = generateUnitOptions();
+      setUnitOptions(options);
+    }
+  }, []);
+
+  const handleChange = (event) => {
+    const selectedValue = event.target.value;
+    console.log('Selected option:', selectedValue);
+    onUnitSelect(selectedValue);
+  };
+
   return (
     <div>
-      <h2>Select Your Military Unit</h2>
-      <select
-        onChange={(e) => {
-          const selectedUnit = e.target.value;
-          generateSymbol(selectedUnit); // Generate the symbol on selection
-        }}
-        defaultValue=""
-      >
+      <label htmlFor="unitSelector">Select a Military Unit:</label>
+      <select id="unitSelector" onChange={handleChange} defaultValue="">
         <option value="" disabled>
-          Choose a unit...
+          Select a unit
         </option>
-        {unitOptions.map((unit) => (
-          <option key={unit.value} value={unit.value}>
-            {unit.label}
+        {unitOptions.map((option, index) => (
+          <option key={index} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>
-
-      <div style={{ marginTop: '20px' }}>
-        <h3>Unit Symbol</h3>
-        {unitSymbol ? (
-          <img src={unitSymbol} alt="Unit Symbol" style={{ width: 100 }} />
-        ) : (
-          <p>Choose a unit to see its symbol.</p>
-        )}
-      </div>
     </div>
   );
 };
