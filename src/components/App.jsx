@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function App() {
   // Set initial state for the selected color
   const [selectedColor, setSelectedColor] = useState('red');
-
+    console.log("color")
   // Handle color change
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
