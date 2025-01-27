@@ -9,7 +9,7 @@ const App = () => {
     setUnitSymbol(symbol); // Update the symbol URL
   };
   try{
-    console.log("rendering App:)
+    console.log("rendering App:")
                 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '20px' }}>
