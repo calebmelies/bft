@@ -8,7 +8,9 @@ const App = () => {
   const handleUnitSelect = (symbol) => {
     setUnitSymbol(symbol); // Update the symbol URL
   };
-
+  try{
+    console.log("rendering App:)
+                
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '20px' }}>
       <h1>Military T-Shirt Designer</h1>
@@ -59,6 +61,10 @@ const App = () => {
       )}
     </div>
   );
+      } catch (error) {
+    console.error('Error in App component:', error);
+    return <div>Something went wrong in the App component.</div>;
+  }
 };
 
 export default App;
