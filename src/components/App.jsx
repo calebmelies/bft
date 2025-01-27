@@ -7,6 +7,7 @@ const App = () => {
 
   const handleUnitSelect = (symbol) => {
       console.log(symbol)
+      console.log("symbol")
       setUnitSymbol(symbol); // Update the symbol URL
   };
   // chrome.storage.session.setAccessLevel({ accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS' });
@@ -27,6 +28,7 @@ const App = () => {
                     borderRadius: '10px',
                 }}
             ></div>
+            {console.log("unitSymbol:")}
             {console.log(unitSymbol)}
           {unitSymbol && (
             <div style={{ marginTop: '40px' }}>
