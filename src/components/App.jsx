@@ -6,7 +6,8 @@ const App = () => {
   const [unitSymbol, setUnitSymbol] = useState('');
 
   const handleUnitSelect = (symbol) => {
-    setUnitSymbol(symbol); // Update the symbol URL
+      console.log(symbol)
+      setUnitSymbol(symbol); // Update the symbol URL
   };
   // chrome.storage.session.setAccessLevel({ accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS' });
   try{
