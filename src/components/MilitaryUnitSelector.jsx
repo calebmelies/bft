@@ -1,64 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import milsymbol from '/packages/milsymbol'; // Ensure this library is compatible with your environment
+import React, { useState } from 'react';
+import MilitaryUnitSelector from './MilitaryUnitSelector';
 
-const MilitaryUnitSelector = ({ onUnitSelect }) => {
-  const [unitOptions, setUnitOptions] = useState([]);
+const App = () => {
+  const [unitSymbol, setUnitSymbol] = useState('');
 
-  // Refactor to avoid useEffect storage-related issues
-  const generateUnitOptions = () => {
-    try {
-      // Generate unit options dynamically using milsymbol
-      const options = [
-        {
-          label: 'LAV-25, 1st LAR',
-          value: new milsymbol.Symbol().setOptions({ icon: 'unit', affiliation: 'Friendly' }).asSVG(),
-        },
-        {
-          label: 'Tank Unit',
-          value: new milsymbol.Symbol().setOptions({ icon: 'tank', affiliation: 'Friendly' }).asSVG(),
-        },
-        {
-          label: 'Infantry Unit',
-          value: new milsymbol.Symbol().setOptions({ icon: 'infantry', affiliation: 'Friendly' }).asSVG(),
-        },
-      ];
-      return options;
-    } catch (error) {
-      console.error('Error generating unit options:', error);
-      return [];
-    }
+  const handleUnitSelect = (symbol) => {
+    console.log('Selected symbol:', symbol);
+    setUnitSymbol(symbol); // Update the symbol URL
   };
 
-  useEffect(() => {
-    // Initialize options only on the client side
-    if (typeof window !== 'undefined') {
-      console.log('Initializing unit options');
-      const options = generateUnitOptions();
-      setUnitOptions(options);
-    }
-  }, []);
+  try {
+    console.log('Rendering App component');
+    return (
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          <h1>Military T-Shirt Designer</h1>
+          <MilitaryUnitSelector onUnitSelect={handleUnitSelect} />
 
-  const handleChange = (event) => {
-    const selectedValue = event.target.value;
-    console.log('Selected option:', selectedValue);
-    onUnitSelect(selectedValue);
-  };
-
-  return (
-    <div>
-      <label htmlFor="unitSelector">Select a Military Unit:</label>
-      <select id="unitSelector" onChange={handleChange} defaultValue="">
-        <option value="" disabled>
-          Select a unit
-        </option>
-        {unitOptions.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
+          {unitSymbol && (
+              <div>
+                <h3>Your T-Shirt Mockup</h3>
+                <img src={unitSymbol} alt="Unit Symbol" />
+              </div>
+          )}
+        </div>
+    );
+  } catch (error) {
+    console.error('Error in App component:', error);
+    return <div>Something went wrong in the App component.</div>;
+  }
 };
 
-export default MilitaryUnitSelector;
+export default App;
