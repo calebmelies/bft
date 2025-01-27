@@ -17,20 +17,21 @@ const App = () => {
             <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '20px' }}>
                 <h1>Military T-Shirt Designer</h1>
                 <MilitaryUnitSelector onUnitSelect={handleUnitSelect}/>
-                <div
-                    style={{
-                        width: '500px',
-                        height: '900px',
-                        display: 'flex',
-                        backgroundImage: 'url(/images/tshirt.png)',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        borderRadius: '10px',
-                    }}
-                ></div>
+                {/*<div*/}
+                {/*    style={{*/}
+                {/*        width: '500px',*/}
+                {/*        height: '900px',*/}
+                {/*        display: 'flex',*/}
+                {/*        margin: '0 auto',*/}
+                {/*        backgroundImage: 'url(/images/tshirt.png)',*/}
+                {/*        backgroundSize: 'cover',*/}
+                {/*        backgroundPosition: 'center',*/}
+                {/*        borderRadius: '10px',*/}
+                {/*    }}*/}
+                {/*></div>*/}
                 {console.log("unitSymbol:")}
                 {console.log(unitSymbol)}
-                {unitSymbol && (
+
                     <div style={{ marginTop: '40px' }}>
                         <h3>Your T-shirt Mockup</h3>
                         <div
@@ -45,6 +46,7 @@ const App = () => {
                                 boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                             }}
                         >
+
                             {/* Display the T-shirt image */}
                             <div
                                 style={{
@@ -58,6 +60,8 @@ const App = () => {
                             ></div>
 
                             {/* Overlay the unit symbol */}
+                            {/*<object data={unitSymbol} width="300" height="300"> </object>*/}
+                            {unitSymbol && (
                             <img
                                 src={unitSymbol}
                                 alt="Unit Symbol"
@@ -70,9 +74,10 @@ const App = () => {
                                     height: 'auto',
                                 }}
                             />
+                            )}
                         </div>
                     </div>
-                )}
+
             </div>
         );
     } catch (error) {

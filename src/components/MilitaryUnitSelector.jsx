@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MilSymbol from 'milsymbol'; // Import the milsymbol package
+import ms from 'milsymbol';
 // Updated unit options
 const unitOptions = [
     { value: 'infantry', label: 'Infantry' },
@@ -21,28 +21,33 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
         // Logic to generate symbol based on selected unit
         if (unit === 'lav25') {
             // LAV-25 symbol generation using milsymbol
-            symbol = new MilSymbol('G*G*C*A*C' + '1505000000', { modifier: 'Reconnaissance', affiliation: 'F' });
+            symbol = new ms.Symbol("130310001412110000000000000000");
+            // var sym = new ms.Symbol("130310001412110000000000000000");
+            // sym.setOptions({size:35});
+            // var canvasElement = sym.asCanvas();
         } else {
             // Default symbol generation (use other codes for different unit types)
-            symbol = new MilSymbol('G*G*F*C*A', { affiliation: 'F' });
+            symbol = new ms.Symbol('G*G*F*C*A', { affiliation: 'F' });
         }
         console.log("symbol:  - " + symbol);
         // Set the symbol as a base64-encoded string
         // setUnitSymbol(symbol.asCanvas().toDataURL());
         // console.log('value: ', value);
         // setSelectedUnit(value);
-        setSelectedUnit(symbol.asCanvas().toDataURL());
+        // setSelectedUnit(symbol.asCanvas().toDataURL());
+        // setSelectedUnit(symbol);
         // onUnitSelect(value); // Pass the value up to the parent component
         onUnitSelect(symbol.asCanvas().toDataURL()); // Pass the value up to the parent component
+        // onUnitSelect(symbol); // Pass the value up to the parent component
     };
 
     return (
         <div>
             <h2>Find Your Military Unit</h2>
             {/* Div to display the selected value */}
-            <div>
-                {selectedUnit ? <p>Selected Unit: {selectedUnit}</p> : <p>Please select a unit</p>}
-            </div>
+            {/*<div>*/}
+            {/*    {selectedUnit ? <p>Selected Unit: {selectedUnit}</p> : <p>Please select a unit</p>}*/}
+            {/*</div>*/}
             <select onChange={handleChange} defaultValue="">
                 <option value="" disabled>
                     Choose a unit...
