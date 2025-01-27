@@ -5,7 +5,7 @@ const TshirtMockup = ({ symbolUrl }) => {
   return (
     <div style={{ position: "relative", textAlign: "center" }}>
       <img
-        src="./images/tshirt.png" // Replace with your t-shirt image URL
+        src="src/components/images/tshirt.png" // Replace with your t-shirt image URL
         alt="T-shirt Mockup"
         style={{ width: 300 }}
       />
