@@ -37,7 +37,7 @@ const App = () => {
               style={{
                 width: '100%',
                 height: '100%',
-                backgroundImage: 'url(https://via.placeholder.com/300x400/FFFFFF/000000?text=T-Shirt)',
+                backgroundImage: 'url(src/components/images/tshirt.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 borderRadius: '10px',
