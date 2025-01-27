@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import MilitaryUnitSelector from './MilitaryUnitSelector';
-
+import TshirtMockup from './TshirtMockup'; // Adjust the path if the file is in a different location
 const App = () => {
   const [unitSymbol, setUnitSymbol] = useState('');
 
