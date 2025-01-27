@@ -48,7 +48,8 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
       }
     }
   };
-
+  console.log('<img src={unitSymbol} alt="Unit Symbol" style={{ width: 100 }} />')
+  console.log(unitSymbol)
   return (
     <div>
       <h2>Select Your Military Unit</h2>
