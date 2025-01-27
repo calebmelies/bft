@@ -25,7 +25,7 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
         {/*  ))}*/}
         {/*</select>*/}
           <select
-              onChange={(e) => {
+              onChange={()=>{
                   console.log("Selected value:", e.target.value);
                   onUnitSelect(e.target.value);
               }}
