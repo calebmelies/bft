@@ -10,7 +10,7 @@ const unitOptions = [
 ];
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
-    const [selectedUnit, setSelectedUnit] = useState('');
+    const [selectedUnit="v", setSelectedUnit] = useState('');
 
     const handleChange = (e) => {
         const value = e.target.value;
