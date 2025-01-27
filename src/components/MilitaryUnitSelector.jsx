@@ -1,4 +1,5 @@
 import React from 'react';
+console.log("MilitaryUnitSelector rendered");
 
 // Updated unit options with the LAV-25
 const unitOptions = [
