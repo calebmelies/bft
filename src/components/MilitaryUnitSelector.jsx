@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+console.log("militaryunitselector")
 // Updated unit options with the LAV-25
 const unitOptions = [
   { value: 'infantry', label: 'Infantry' },
