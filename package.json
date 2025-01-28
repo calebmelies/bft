@@ -16,8 +16,5 @@
     "astro": "^5.1.9",
     "react-select": "^5.8.0",
     "milsymbol": "spatialillusions/milsymbol"
-  },
-  "dependencies": {
-    "milsymbol": "spatialillusions/milsymbol"
   }
 }
