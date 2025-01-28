@@ -6,7 +6,9 @@ const unitOptions = [
     { value: 'armor', label: 'Armor' },
     { value: 'artillery', label: 'Artillery' },
     { value: 'aviation', label: 'Aviation' },
+    { value: '101stAD', label: '101st Airborne Division (Air Assault)'},
     { value: 'lav25', label: 'LAV-25 (1st Light Armored Reconnaissance)' },
+    { value: '75RR', label: '75th Ranger Regiment'}
 ];
 
 const MilitaryUnitSelector = ({ onUnitSelect }) => {
@@ -22,23 +24,16 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
         if (unit === 'lav25') {
             // LAV-25 symbol generation using milsymbol
             symbol = new ms.Symbol("130310001412110000000000000000");
-            // var sym = new ms.Symbol("130310001412110000000000000000");
-            // sym.setOptions({size:35});
-            // var canvasElement = sym.asCanvas();
+        } else if (unit === '101stAD') {
+            symbol = new ms.Symbol("SFGPUCAA----*****");
+        }  else if (unit === '75RR') {
+            symbol = new ms.Symbol("SFGPUCR----*****");
         } else {
             // Default symbol generation (use other codes for different unit types)
-            symbol = new ms.Symbol('G*G*F*C*A', { affiliation: 'F' });
+            symbol = new ms.Symbol('SFGPUCAA--M002XXX09');
         }
         console.log("symbol:  - " + symbol);
-        // Set the symbol as a base64-encoded string
-        // setUnitSymbol(symbol.asCanvas().toDataURL());
-        // console.log('value: ', value);
-        // setSelectedUnit(value);
-        // setSelectedUnit(symbol.asCanvas().toDataURL());
-        // setSelectedUnit(symbol);
-        // onUnitSelect(value); // Pass the value up to the parent component
         onUnitSelect(symbol.asCanvas().toDataURL()); // Pass the value up to the parent component
-        // onUnitSelect(symbol); // Pass the value up to the parent component
     };
 
     return (

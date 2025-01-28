@@ -4,6 +4,7 @@ import MilSymbol from 'milsymbol'; // Import the milsymbol package
 // Updated unit options with the LAV-25
 const unitOptions = [
     { value: 'infantry', label: 'Infantry' },
+    {value: '101st Airborne Division (Air Assault)', label: '101st Airborne Division (Air Assault)'},
     { value: 'armor', label: 'Armor' },
     { value: 'artillery', label: 'Artillery' },
     { value: 'aviation', label: 'Aviation' },
@@ -21,6 +22,8 @@ const MilitaryUnitSelector = ({ onUnitSelect }) => {
         if (unit === 'lav25') {
             // LAV-25 symbol generation using milsymbol
             symbol = new MilSymbol('G*G*C*A*C' + '1505000000', { modifier: 'Reconnaissance', affiliation: 'F' });
+        } else if (unit === '101st Airborne Division (Air Assault)') {
+            symbol = new MilSymbol('G*G*F*C*A', { affiliation: 'F' });
         } else {
             // Default symbol generation (use other codes for different unit types)
             symbol = new MilSymbol('G*G*F*C*A', { affiliation: 'F' });
