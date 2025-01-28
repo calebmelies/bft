@@ -1,14 +1,23 @@
 {
-  "devDependencies": {
-    "@astrojs/preact": "^1.0.2",
-    "@astrojs/react": "^1.0.2",
-    "@astrojs/sitemap": "^1.0.0",
-    "@netlify/netlify-marketing-tokens": "^1.1.0",
-    "astro": "^5.1.9",
-    "milsymbol": "github:spatialillusions/milsymbol",
-    "react-select": "^5.8.0"
-  },
-  "dependencies": {
-    "axios": "^1.7.9"
+    "name": "bft",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+      "dev": "astro dev",
+      "start": "astro dev",
+      "build": "astro build",
+      "preview": "astro preview"
+    },
+    "dependencies": {
+      "milsymbol": "github:spatialillusions/milsymbol"
+    },
+    "devDependencies": {
+      "@astrojs/react": "^1.0.2",
+      "@astrojs/preact": "^1.0.2",
+      "@astrojs/sitemap": "^1.0.0",
+      "@netlify/netlify-marketing-tokens": "^1.1.0",
+      "astro": "^2.0.0",
+      "react-select": "^5.8.0",
+      "milsymbol": "github:spatialillusions/milsymbol"
+    }
   }
-}
