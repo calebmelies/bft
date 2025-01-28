@@ -15,6 +15,9 @@
     "@netlify/netlify-marketing-tokens": "^1.1.0",
     "astro": "^5.1.9",
     "react-select": "^5.8.0",
-    "milsymbol": "spatialillusions/milsymbol"
+    "milsymbol": "https://github.com/spatialillusions/milsymbol"
+  },
+  "dependencies": {
+    "milsymbol": "https://github.com/spatialillusions/milsymbol"
   }
 }
